@@ -6,7 +6,7 @@ int PowMod(int n, int p,int M)
 	{
 		return n % M;
 	}
-	int temp = pow(n, p/2);
+	int temp = PowMod(n, p/2,M);
 	int result = (temp*temp) % M;
 	if (p % 2 == 1)
 	{
