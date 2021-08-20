@@ -1,0 +1,30 @@
+双指针，用集合存放子串，count判断是否在集合中，erase删除
+class Solution {
+public:
+    /**
+     * 
+     * @param arr int整型vector the array
+     * @return int整型
+     */
+    int maxLength(vector<int>& arr) {
+        // write code here
+        set<int>s;
+        int tail=0,head=0;
+        int res=0;
+        while(tail<arr.size())
+        {
+            if(!s.count(arr[tail]))
+            {
+                s.insert(arr[tail]);
+                ++tail;
+            }
+            else
+            {
+                s.erase(arr[head]);
+                head++;
+            }
+            res = res>s.size()?res:s.size();
+        }
+        return res;
+    }
+};
