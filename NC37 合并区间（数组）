@@ -1,0 +1,33 @@
+先对intervals进行排序，然后再一一比较
+/**
+ * Definition for an interval.
+ * struct Interval {
+ *     int start;
+ *     int end;
+ *     Interval() : start(0), end(0) {}
+ *     Interval(int s, int e) : start(s), end(e) {}
+ * };
+ */
+class Solution {
+public:
+    vector<Interval> merge(vector<Interval> &intervals) {
+        vector<Interval>ans;
+        sort(intervals.begin(), intervals.end(),compare);
+        int i;
+        if(intervals.size()==0)
+            return ans;
+        ans.push_back(intervals[0]);
+        for(i=1;i<intervals.size();i++)
+        {
+            if(intervals[i].start<=ans.back().end)
+                ans.back().end=max(ans.back().end,intervals[i].end);
+            else
+                ans.push_back(intervals[i]);
+        }
+        return ans;
+    }
+    static bool compare(Interval x,Interval y)
+    {
+        return x.start<y.start;
+    }
+};
