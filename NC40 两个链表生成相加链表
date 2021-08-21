@@ -1,0 +1,28 @@
+先反转链表，然后进行相加，最后再反转
+class Solution {
+public:
+    ListNode* addInList(ListNode* head1, ListNode* head2) {
+        ListNode* rh1 = reverseList(head1);
+        ListNode* rh2 = reverseList(head2);
+        int c = 0;
+        ListNode* dummy = new ListNode(0);
+        ListNode* p = dummy;
+        while(rh1||rh2||c){
+            int sum = c;
+            if(rh1){sum += rh1->val; rh1 = rh1->next;} 
+            if(rh2){sum += rh2->val; rh2 = rh2->next;} 
+            ListNode* t = new ListNode(sum%10);
+            c = sum/=10;
+            p->next = t;
+            p = p->next;
+        }
+        return reverseList(dummy->next);
+    }
+    ListNode* reverseList(ListNode* head){
+        if(!head->next) return head;
+        ListNode* last = reverseList(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+        return last;
+    }
+};
