@@ -1,0 +1,31 @@
+新建两个节点，分别作为左右分割的头结点，然后遍历链表，小于x的放在左边，大于x的右边，最后合并两个链表
+class Solution {
+public:
+    /**
+     * 
+     * @param head ListNode类 
+     * @param x int整型 
+     * @return ListNode类
+     */
+    ListNode* partition(ListNode* head, int x) {
+        // write code here
+        ListNode* p1 = new ListNode(0);
+        ListNode* p2 = new ListNode(0);
+        ListNode* p = head;
+        ListNode* pp1 = p1,*pp2 = p2;
+        while(p){
+            if(p->val<x){
+                pp1->next = p;
+                pp1 = pp1->next;
+            }
+            else{
+                pp2->next = p;
+                pp2 = pp2->next;
+            }
+            p = p->next;
+        }
+        pp1->next = p2->next;
+        pp2->next = NULL;
+        return p1->next;
+    }
+};
