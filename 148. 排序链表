@@ -1,4 +1,4 @@
-递归版归并排序，找到中间节点，分别对左右区间进行排序，递归
+递归版归并排序，找到中间节点，分别对左右区间进行排序，递归.
 class Solution {
 public:
     ListNode* sortList(ListNode* head) {
