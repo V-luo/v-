@@ -1,0 +1,42 @@
+递归版归并排序
+class Solution {
+public:
+    ListNode* sortList(ListNode* head) {
+        return mergesort(head);
+
+    }
+    ListNode* mergesort(ListNode* head)
+    {
+        if(!head||!head->next)
+            return head;
+        ListNode* fast = head;
+        ListNode* slow = head;
+        ListNode* mid = head;
+        while(fast&&fast->next)
+        {
+            fast = fast->next->next;
+            mid = slow;
+            slow = slow->next;
+        }
+        mid->next = NULL;
+        ListNode* left = mergesort(head);
+        ListNode* right = mergesort(slow);
+        return merge(left,right);
+    }
+    ListNode* merge(ListNode* left, ListNode* right)
+    {
+        if(!left)
+            return right;
+        if(!right)
+            return left;
+        if(left->val <= right->val){
+            left->next = merge(left->next,right);
+            return left;
+        }
+        else{
+            right->next = merge(right->next,left);
+            return right;
+        }
+        
+    }
+};
