@@ -1,0 +1,23 @@
+把从2到N的一组正整数从小到大按顺序排列。从中依次删除2的倍数、3的倍数、5的倍数，直到根号N的倍数为止，剩余的即为2~N之间的所有素数
+#include <bits/stdc++.h>
+using namespace std;
+#define max 9999
+bool isprime[max];
+void Set(bool isprime[],int N)
+{
+    for(int i=0;i<=N;i++)
+        isprime[i]=true;
+    for(int i = 2;i<=N;i++)
+        if(isprime)
+            for(int j = 2;j<=N;j++)
+                isprime[j*i]=false;
+    isprime[0]=isprime[1]=false;
+}
+int main(){
+    int N;
+    cin>>N;
+    Set(isprime,N);
+    for(int i=2;i<=N;i++)
+        if(isprime[i])
+        cout<<i<<" ";
+}
