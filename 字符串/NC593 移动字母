@@ -1,0 +1,23 @@
+遍历字符串，当前字符不为'a' 时，加入新字符串，遍历时记录'a'的个数，遍历结束在新字符串末尾加上相同数目的 'a'
+class Solution {
+public:
+    /**
+     * 
+     * @param s string字符串 
+     * @return string字符串
+     */
+    string change(string s) {
+        // write code here
+        int cnt = 0;
+        string ss = "";
+        for(int i = 0; i < s.size(); i++)
+        {
+            if(s[i] == 'a')
+                cnt++;
+            else
+                ss += s[i];
+        }
+        ss.append(cnt,'a');
+        return ss;
+    }
+};
