@@ -1,8 +1,0 @@
-将node.val赋值为node.next.val然后node.next=node.next.next，这样node节点就删除了
-class Solution {
-public:
-    void deleteNode(ListNode* node) {
-        node->val = node->next->val;
-        node->next = node->next->next;
-    }
-};
