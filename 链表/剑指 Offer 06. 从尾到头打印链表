@@ -1,0 +1,22 @@
+第一次遍历链表，记录链表元素个数，然后分配vector大小，第二次遍历，从尾到头赋值
+class Solution {
+public:
+    vector<int> reversePrint(ListNode* head) {
+        ListNode* p = head;
+        int cnt = 0;
+        while(p)
+        {
+            cnt++;
+            p = p->next;
+        }
+        vector<int>ans(cnt);
+        int i=1;
+        while(head)
+        {
+            ans[cnt-i] = head->val;
+            head = head->next;
+            i++;
+        }
+        return ans;
+    }
+};
