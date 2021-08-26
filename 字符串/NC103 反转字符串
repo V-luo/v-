@@ -1,0 +1,16 @@
+从s末尾从前遍历，加到空字符串ss
+class Solution {
+public:
+    /**
+     * 反转字符串
+     * @param str string字符串 
+     * @return string字符串
+     */
+    string solve(string str) {
+        // write code here
+        string ss = "";
+        for(int i = str.size()-1; i > -1; i--)
+            ss += str[i];
+        return ss;
+    }
+};
