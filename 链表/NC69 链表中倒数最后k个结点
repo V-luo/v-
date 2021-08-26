@@ -1,0 +1,32 @@
+先后指针，先指针指向头结点后面k个节点，若长度小于k，返回null，等于k返回head，然后后指针指向头结点，先后指针同时遍历，遍历完后，返回后指针下一个节点
+class Solution {
+public:
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     *
+     * 
+     * @param pHead ListNode类 
+     * @param k int整型 
+     * @return ListNode类
+     */
+    ListNode* FindKthToTail(ListNode* pHead, int k) {
+        // write code here
+        ListNode* fast;
+        ListNode* slow;
+        fast = pHead;
+        for(int i=0;i<k;i++){
+            if(fast==NULL)
+                return NULL;
+            fast = fast->next;
+        }
+        if(fast==NULL)
+            return pHead;
+        slow = pHead;
+        while(fast&&fast->next)
+        {
+            slow = slow->next;
+            fast = fast->next;
+        }
+        return slow->next;
+    }
+};
