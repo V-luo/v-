@@ -1,8 +1,0 @@
-由于要找超过一半的那个数，所以排序后直接返回中间位置的数
-class Solution {
-public:
-    int MoreThanHalfNum_Solution(vector<int> numbers) {
-        sort(numbers.begin(),numbers.end());
-        return numbers[numbers.size()/2];
-    }
-};
