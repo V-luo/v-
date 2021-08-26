@@ -1,0 +1,23 @@
+class Solution {
+public:
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     *
+     * 给定一个字符串s，返回让牛牛感到满意的字符串的最大的长度。
+     * @param s string字符串 代表题目中描述的s
+     * @return int整型
+     */
+    int solve(string s) {
+        // write code here
+        if(s.size()==0)
+            return 0;
+        int cnt = 0;
+
+        for(char f : s)
+            if(f == 'c')
+                cnt++;
+        if(cnt > s.size() / 2)
+            return s.size();
+        return cnt * 2 - 1;
+    }
+};
