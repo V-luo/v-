@@ -1,0 +1,13 @@
+第一次遍历字符串，用map记录每个字符出现的次数，第二次遍历返回第一个出现次数为1的字符，否则返回-1
+class Solution {
+public:
+    int FirstNotRepeatingChar(string str) {
+        map<char,int> map;
+        for(int i = 0; i < str.size(); i++)
+            map[str[i]]++;
+        for(int i = 0; i < str.size(); i++)
+            if(map[str[i]]==1)
+                return i;
+        return -1;
+    }
+};
