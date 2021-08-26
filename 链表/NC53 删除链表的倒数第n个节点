@@ -1,0 +1,27 @@
+先后指针，先指针先走n步，然后同时开始，当先指针到最后一个节点时，后指针的下一个节点就是要删除的节点
+class Solution {
+public:
+    /**
+     * 
+     * @param head ListNode类 
+     * @param n int整型 
+     * @return ListNode类
+     */
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        // write code here
+        ListNode* fast;
+        ListNode* slow;
+        slow = fast = head;
+        for(int i=0;i<n;i++)
+            fast = fast->next;
+        if(fast == NULL)
+            return head->next;
+        while(fast->next)
+        {
+            slow = slow->next;
+            fast = fast->next;
+        }
+        slow->next = slow->next->next;
+        return head;
+    }
+};
