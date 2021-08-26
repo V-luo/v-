@@ -1,0 +1,32 @@
+基于快速排序思想，实现单链表的快速排序
+class Solution {
+public:
+    /**
+     * 
+     * @param head ListNode类 the head node
+     * @return ListNode类
+     */
+    ListNode* sortInList(ListNode* head) {
+        // write code here
+        quickSort(head, NULL);
+        return head;
+    }
+    void quickSort(ListNode *start,ListNode *end) {
+    // write your code here
+    if(start==end) 
+		return ;
+	ListNode *slow=start;
+    ListNode *fast=start->next;
+    int k=start->val;
+    while(fast!=end){
+    	if(fast->val < k){
+    		swap(slow->next->val,fast->val);
+    		slow=slow->next;
+		}
+		fast=fast->next;
+	}
+	swap(slow->val,start->val);
+	quickSort(start,slow);
+	quickSort(slow->next,end);
+}
+};
