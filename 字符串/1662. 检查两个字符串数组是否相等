@@ -1,0 +1,13 @@
+遍历得到两个字符串，判断是否相等
+class Solution {
+public:
+    bool arrayStringsAreEqual(vector<string>& word1, vector<string>& word2) {
+        string str1 = "";
+        string str2 = "";
+        for(string ss:word1)
+            str1+=ss;
+        for(string ss:word2)
+            str2+=ss;
+        return str1==str2;
+    }
+};
