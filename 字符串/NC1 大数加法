@@ -1,0 +1,34 @@
+两个字符串从后向前遍历，模拟加法，然后每次插入到一个新的字符串的头部，注意保存进位即可
+class Solution {
+public:
+
+    string solve(string s, string t) {
+        // write code here
+        int i = s.size()-1, j = t.size()-1;
+        string res;
+        int c = 0;
+        while(i >= 0 && j >= 0){
+            int base = s[i] + t[j] - '0' + c - '0';
+            res = res.insert(0, 1, base%10+'0');
+            c = base/10;
+            --i, --j;
+        }
+
+        while(i >= 0){
+            int base = s[i] + c - '0';
+            res = res.insert(0, 1, base%10+'0');
+            c = base/10;
+            --i;
+        }
+        while(j >= 0){
+            int base = t[j] + c - '0';
+            res = res.insert(0, 1, base%10+'0');
+            c = base/10;
+            --j;
+        }
+        if(c != 0) res = res.insert(0, 1, c+'0');
+
+        return res;
+    }
+};
+
