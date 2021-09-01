@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int getLongestPalindrome(string A, int n) {
+        if(n <= 1) return n;
+        int longest = 1;
+        bool dp[n][n];
+        for(int i = 0; i < n; i++) { //从短到长对每种长度分别判断，可以这么做是因为判断较长的需要利用较短的
+            for(int j = 0; j< n - i; j++) { //从头开始对长度i+1的子字符串判断
+                if(i == 0) dp[j][j] = 1; //长度1一定为回文
+                else if(i == 1) dp[j][j + 1] = (A[j] == A[j + 1]); //长度2判断头尾是否相等
+                else if(A[j] == A[j + i]) dp[j][j + i] = dp[j + 1][j + i - 1]; //长度大于等于3，判断两头是否相等，若相等则同去两头的bool值一样
+                else dp[j][j + i] = 0; //否则为0
+                if(dp[j][j + i]) longest = max(longest, i + 1); //更新最大值
+            }
+        }
+        return longest;
+    }
+};
